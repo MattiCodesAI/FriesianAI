@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="FriesianAI — your personal AI operating system." />
+    <title>FriesianAI</title>
+    <script>
+      // Apply the persisted theme before first paint to avoid a flash of the wrong theme.
+      (function () {
+        try {
+          var raw = localStorage.getItem('friesian:settings');
+          var theme = raw ? JSON.parse(raw).state.theme : 'dark';
+          if (theme === 'system') {
+            theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+          }
+          document.documentElement.classList.toggle('dark', theme !== 'light');
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

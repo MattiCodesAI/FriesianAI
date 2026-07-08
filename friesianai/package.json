@@ -1,0 +1,21 @@
+{
+  "name": "friesianai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "FriesianAI — a personal AI operating system. Workspace-first, project-centric, model-agnostic.",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace apps/web",
+    "dev:server": "npm run dev --workspace apps/server",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "db:generate": "npm run db:generate --workspace apps/server",
+    "db:migrate": "npm run db:migrate --workspace apps/server"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
